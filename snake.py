@@ -7,9 +7,10 @@ LEFT = 180
 RIGHT = 0
 
 
-class Snake:
+class Snake(Turtle):
 
     def __init__(self):
+        super().__init__()
         self.segments = []
         for i in range(3):
             self.new_segment((-(i*20)-150, 20))
@@ -53,4 +54,10 @@ class Snake:
         if self.segments[0].heading() != RIGHT:
             self.segments[0].setheading(LEFT)
 
+
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(1000,100)
+        self.segments.clear()
+        self.__init__()
 
